@@ -24,6 +24,7 @@ const projects = [
     title: `DeepRead`,
     description:
       "AI system that turns machine learning research papers into implementation-ready technical briefings with a tool-calling Q&A agent.",
+    deployedURL: "https://deep-read-seven.vercel.app/",
     cover: DeepRead,
     stacks: ["FastAPI", "Gemini", "LangChain", "Next.js", "Tailwind CSS", "PostgreSQL"],
     isRepo: true,
