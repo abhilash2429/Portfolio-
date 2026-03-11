@@ -1,0 +1,66 @@
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeCodeTitles from "rehype-code-titles";
+import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
+import { defineCollection, defineConfig, s } from "velite";
+import rehypeExternalLink from "rehype-external-links";
+
+const computedFields = <T extends { slug: string }>(data: T) => ({
+  ...data,
+  slugAsParams: data.slug.split("/").pop() ?? data.slug,
+});
+
+const posts = defineCollection({
+  name: "Post",
+  pattern: "*.mdx",
+  schema: s
+    .object({
+      title: s.string().max(99),
+      slug: s.path(),
+      description: s.string().max(999),
+      cover: s.string(),
+      date: s.isodate(),
+      published: s.boolean().default(true),
+      body: s.mdx(),
+      toc: s.toc(),
+      tags: s.array(s.string()),
+      metadata: s.metadata(),
+    })
+    .transform(computedFields),
+});
+
+export default defineConfig({
+  root: "src/content",
+  output: {
+    data: ".velite",
+    assets: "public/static",
+    base: "/static/",
+    name: "[name]-[hash:6].[ext]",
+    clean: true,
+  },
+  collections: { posts },
+  mdx: {
+    rehypePlugins: [
+      rehypeSlug,
+      rehypeCodeTitles,
+      [rehypePrettyCode, { theme: "vitesse-dark" }],
+      [
+        rehypeAutolinkHeadings,
+        {
+          behavior: "wrap",
+          properties: {
+            className: ["subheading-anchor"],
+            ariaLabel: "Link to section",
+          },
+        },
+      ],
+      [
+        rehypeExternalLink,
+        {
+          properties: { target: "_blank", rel: "noopener noreferrer" },
+        },
+      ],
+    ],
+    remarkPlugins: [],
+  },
+});

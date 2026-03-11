@@ -1,0 +1,55 @@
+# dependencies
+node_modules/
+
+# build outputs
+.next/
+out/
+build/
+dist/
+
+# cache and generated files
+.velite/
+.turbo/
+.cache/
+.eslintcache
+__pycache__/
+*.pyc
+*.pyo
+coverage/
+*.tsbuildinfo
+i18n.cache
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+!.env.example
+
+# deployment
+.vercel/
+
+# editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/tasks.json
+
+# misc
+*.pem
+
+CLAUDE_OPUS_INSTRUCTIONS.md 
+CODEX_INSTRUCTIONS.md 
+GEMINI.md

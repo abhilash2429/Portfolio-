@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>IntelliCredit — Hero Concepts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #080808;
+        }
+
+        /* ─── SWITCHER ─── */
+        .sw {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            height: 48px;
+            background: rgba(8, 8, 8, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .sw-tab {
+            padding: 6px 20px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.35);
+            transition: all .2s;
+            letter-spacing: 0.03em;
+        }
+
+        .sw-tab.on {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .sw-sep {
+            width: 1px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 0 6px;
+        }
+
+        .scene {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .scene.on {
+            display: block;
+        }
+
+        /* ══════════════════════════════════════════════════════
+   CONCEPT I — "MERIDIAN"
+   Near-black · Single warm-white glow · glass panels
+   Instrument Serif + DM Mono
+══════════════════════════════════════════════════════ */
+        #s1 {
+            background: #07080a;
+            font-family: 'DM Sans', sans-serif;
+            overflow: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Atmospheric background */
+        #s1 .bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 55% 55% at 70% 20%, rgba(255, 255, 255, 0.035) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 10% 80%, rgba(120, 180, 140, 0.04) 0%, transparent 60%);
+        }
+
+        /* Subtle grid */
+        #s1 .grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 20%, transparent 75%);
+        }
+
+        /* ── Nav ── */
+        #s1 .nav {
+            position: relative;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 64px 0;
+        }
+
+        #s1 .logo {
+            font-family: 'Instrument Serif', serif;
+            font-size: 19px;
+            color: #fff;
+            letter-spacing: 0.01em;
+        }
+
+        #s1 .logo i {
+            color: rgba(200, 220, 200, 0.6);
+            font-style: italic;
+        }
+
+        #s1 .nav-links {
+            display: flex;
+            gap: 36px;
+        }
+
+        #s1 .nav-link {
+            font-size: 12.5px;
+            color: rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        #s1 .nav-link:hover {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        #s1 .nav-cta {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 9px 22px;
+            border-radius: 999px;
+            cursor: pointer;
+            letter-spacing: 0.03em;
+            backdrop-filter: blur(12px);
+            transition: all .2s;
+        }
+
+        #s1 .nav-cta:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.22);
+        }
+
+        /* ── Hero ── */
+        #s1 .hero {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 96px 64px 0;
+            max-width: 1200px;
+        }
+
+        #s1 .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 38px;
+            opacity: 0;
+            animation: up .7s .1s ease forwards;
+        }
+
+        #s1 .eyebrow-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(160, 210, 170, 0.8);
+            box-shadow: 0 0 8px rgba(160, 210, 170, 0.5);
+        }
+
+        #s1 .eyebrow-txt {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 400;
+            color: rgba(160, 210, 170, 0.7);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        #s1 .h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(56px, 6.2vw, 92px);
+            font-weight: 400;
+            line-height: 1.04;
+            letter-spacing: -0.025em;
+            color: #fff;
+            max-width: 820px;
+            opacity: 0;
+            animation: up .9s .25s ease forwards;
+        }
+
+        #s1 .h1 em {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.45);
+        }
+
+        #s1 .sub {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.38);
+            max-width: 520px;
+            margin-top: 28px;
+            opacity: 0;
+            animation: up .9s .42s ease forwards;
+        }
+
+        #s1 .sub b {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+        }
+
+        #s1 .cta-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 44px;
+            opacity: 0;
+            animation: up .9s .58s ease forwards;
+        }
+
+        #s1 .btn-p {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: #0a0c0a;
+            background: #d8edd8;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            cursor: pointer;
+            letter-spacing: 0.02em;
+            transition: all .22s;
+        }
+
+        #s1 .btn-p:hover {
+            background: #e8f5e8;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 28px rgba(160, 210, 160, 0.18);
+        }
+
+        #s1 .btn-s {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.4);
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 13px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            letter-spacing: 0.02em;
+            transition: all .22s;
+            backdrop-filter: blur(8px);
+        }
+
+        #s1 .btn-s:hover {
+            border-color: rgba(255, 255, 255, 0.22);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ── Pipeline strip ── */
+        #s1 .pipeline {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-top: 72px;
+            width: 100%;
+            opacity: 0;
+            animation: up .9s .72s ease forwards;
+        }
+
+        #s1 .pipe-step {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.065);
+            border-right: none;
+            position: relative;
+        }
+
+        #s1 .pipe-step:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        #s1 .pipe-step:last-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.065);
+            border-radius: 0 10px 10px 0;
+        }
+
+        #s1 .pipe-step.active-step {
+            background: rgba(160, 210, 160, 0.05);
+            border-color: rgba(160, 210, 160, 0.15);
+            border-right: 1px solid rgba(160, 210, 160, 0.15);
+        }
+
+        #s1 .pipe-step.active-step+.pipe-step {
+            border-left: none;
+        }
+
+        #s1 .pipe-num {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.18);
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+        }
+
+        #s1 .pipe-step.active-step .pipe-num {
+            color: rgba(160, 210, 160, 0.6);
+        }
+
+        #s1 .pipe-name {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        #s1 .pipe-step.active-step .pipe-name {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        #s1 .pipe-desc {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.22);
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        /* ── Glass cards row ── */
+        #s1 .cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+            margin-top: 24px;
+            padding-bottom: 80px;
+            opacity: 0;
+            animation: up .9s .88s ease forwards;
+        }
+
+        #s1 .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 22px;
+            backdrop-filter: blur(24px);
+            transition: border-color .25s, background .25s;
+        }
+
+        #s1 .card:hover {
+            border-color: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.045);
+        }
+
+        #s1 .card-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            background: rgba(160, 210, 160, 0.08);
+            border: 1px solid rgba(160, 210, 160, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            font-size: 13px;
+        }
+
+        #s1 .card-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+        }
+
+        #s1 .card-body {
+            font-size: 12px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.35);
+            line-height: 1.7;
+        }
+
+        #s1 .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 14px;
+        }
+
+        #s1 .tag {
+            font-family: 'DM Mono', monospace;
+            font-size: 9.5px;
+            color: rgba(160, 210, 160, 0.5);
+            background: rgba(160, 210, 160, 0.05);
+            border: 1px solid rgba(160, 210, 160, 0.1);
+            padding: 3px 9px;
+            border-radius: 4px;
+            letter-spacing: 0.04em;
+        }
+
+        /* ── Stat bar ── */
+        #s1 .statbar {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            gap: 1px;
+            margin: 0 64px;
+            opacity: 0;
+            animation: up .9s 1s ease forwards;
+        }
+
+        #s1 .stat {
+            flex: 1;
+            padding: 20px 28px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.055);
+            border-right: none;
+        }
+
+        #s1 .stat:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        #s1 .stat:last-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.055);
+            border-radius: 0 10px 10px 0;
+        }
+
+        #s1 .stat-n {
+            font-family: 'Instrument Serif', serif;
+            font-size: 32px;
+            color: rgba(255, 255, 255, 0.85);
+            letter-spacing: -0.02em;
+        }
+
+        #s1 .stat-l {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        @keyframes up {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* ══════════════════════════════════════════════════════
+   CONCEPT II — "OBSIDIAN"
+   Black + single electric-white light source
+   Full glass UI showcase · editorial data density
+══════════════════════════════════════════════════════ */
+        #s2 {
+            background: #050505;
+            font-family: 'DM Sans', sans-serif;
+            overflow: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Light source top-right */
+        #s2 .light {
+            position: absolute;
+            top: -200px;
+            right: -100px;
+            width: 900px;
+            height: 900px;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+        }
+
+        /* Noise grain */
+        #s2 .grain {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.022;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 300px;
+        }
+
+        /* Subtle horizontal rule lines */
+        #s2 .lines {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: repeating-linear-gradient(0deg, transparent, transparent 119px, rgba(255, 255, 255, 0.025) 120px);
+        }
+
+        /* ── Nav ── */
+        #s2 .nav {
+            position: relative;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 72px 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+        }
+
+        /* Glass nav bar feel */
+        #s2 .nav::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.015);
+            backdrop-filter: blur(0px);
+        }
+
+        #s2 .logo {
+            font-family: 'Instrument Serif', serif;
+            font-size: 18px;
+            color: #fff;
+            letter-spacing: 0.015em;
+            position: relative;
+        }
+
+        #s2 .logo span {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        #s2 .nav-mid {
+            display: flex;
+            gap: 32px;
+            position: relative;
+        }
+
+        #s2 .nl {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: color .2s;
+        }
+
+        #s2 .nl:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        #s2 .nl.cur {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        #s2 .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        #s2 .badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.12em;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 999px;
+            text-transform: uppercase;
+        }
+
+        #s2 .get-started {
+            font-size: 12px;
+            font-weight: 500;
+            color: #050505;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 9px 20px;
+            border-radius: 7px;
+            cursor: pointer;
+            letter-spacing: 0.02em;
+            transition: all .22s;
+        }
+
+        #s2 .get-started:hover {
+            background: #fff;
+        }
+
+        /* ── Main layout ── */
+        #s2 .body {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 0;
+            min-height: calc(100vh - 90px);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ── Left col ── */
+        #s2 .left {
+            padding: 80px 72px 72px;
+            border-right: 1px solid rgba(255, 255, 255, 0.055);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #s2 .left-top {}
+
+        #s2 .kicker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 44px;
+            opacity: 0;
+            animation: up .6s .05s ease forwards;
+        }
+
+        #s2 .kicker-line {
+            width: 28px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        #s2 .kicker-txt {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        #s2 .h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(52px, 5.8vw, 82px);
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: #fff;
+            margin-bottom: 0;
+            opacity: 0;
+            animation: up .85s .2s ease forwards;
+        }
+
+        #s2 .h1 em {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        #s2 .sub-block {
+            margin-top: 36px;
+            max-width: 500px;
+            opacity: 0;
+            animation: up .85s .38s ease forwards;
+        }
+
+        #s2 .sub {
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1.85;
+            color: rgba(255, 255, 255, 0.36);
+        }
+
+        #s2 .sub strong {
+            color: rgba(255, 255, 255, 0.65);
+            font-weight: 400;
+        }
+
+        #s2 .bullets {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        #s2 .bullet {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.3);
+            line-height: 1.5;
+        }
+
+        #s2 .bullet-icon {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.35);
+            margin-top: 1px;
+        }
+
+        #s2 .ctas {
+            display: flex;
+            gap: 10px;
+            margin-top: 52px;
+            opacity: 0;
+            animation: up .85s .54s ease forwards;
+        }
+
+        #s2 .cta-main {
+            font-size: 13px;
+            font-weight: 500;
+            color: #050505;
+            background: #fff;
+            border: none;
+            padding: 13px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all .22s;
+            letter-spacing: 0.015em;
+        }
+
+        #s2 .cta-main:hover {
+            background: #e8e8e8;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 32px rgba(255, 255, 255, 0.1);
+        }
+
+        #s2 .cta-ghost {
+            font-size: 13px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            padding: 12px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all .22s;
+            backdrop-filter: blur(12px);
+        }
+
+        #s2 .cta-ghost:hover {
+            border-color: rgba(255, 255, 255, 0.18);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ── Bottom stat row ── */
+        #s2 .stat-row {
+            display: flex;
+            gap: 40px;
+            padding-top: 48px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            animation: up .85s .68s ease forwards;
+        }
+
+        #s2 .sr-num {
+            font-family: 'Instrument Serif', serif;
+            font-size: 34px;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: -0.03em;
+        }
+
+        #s2 .sr-lbl {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.22);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+
+        /* ── Right col — glass dashboard ── */
+        #s2 .right {
+            padding: 40px 36px 40px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            opacity: 0;
+            animation: up 1s .5s ease forwards;
+        }
+
+        /* Glass panel base */
+        .gp {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            backdrop-filter: blur(32px);
+            overflow: hidden;
+            transition: border-color .25s;
+        }
+
+        .gp:hover {
+            border-color: rgba(255, 255, 255, 0.11);
+        }
+
+        .gp-head {
+            padding: 14px 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .gp-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .gp-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.2);
+            letter-spacing: 0.08em;
+        }
+
+        .gp-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(160, 220, 160, 0.7);
+            box-shadow: 0 0 6px rgba(160, 220, 160, 0.5);
+        }
+
+        .gp-body {
+            padding: 18px;
+        }
+
+        /* Score panel */
+        #s2 .score-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #s2 .score-big {
+            font-family: 'Instrument Serif', serif;
+            font-size: 56px;
+            color: #fff;
+            letter-spacing: -0.04em;
+            line-height: 1;
+        }
+
+        #s2 .score-meta {
+            text-align: right;
+        }
+
+        #s2 .score-grade {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        #s2 .score-label {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            color: rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        #s2 .gauge-track {
+            height: 3px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 2px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+
+        #s2 .gauge-fill {
+            height: 100%;
+            width: 64%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.7));
+        }
+
+        /* Five Cs panel */
+        #s2 .five-cs {
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        #s2 .fc-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #s2 .fc-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.35);
+            width: 72px;
+            flex-shrink: 0;
+        }
+
+        #s2 .fc-track {
+            flex: 1;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        #s2 .fc-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        #s2 .fc-fill.warn {
+            background: rgba(255, 160, 80, 0.5);
+        }
+
+        #s2 .fc-val {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.35);
+            width: 22px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        /* Agents panel */
+        #s2 .agent-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        #s2 .agent-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+        }
+
+        #s2 .agent-item:last-child {
+            border-bottom: none;
+        }
+
+        #s2 .agent-state {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        #s2 .done-dot {
+            background: rgba(160, 220, 160, 0.7);
+            box-shadow: 0 0 5px rgba(160, 220, 160, 0.4);
+        }
+
+        #s2 .active-dot {
+            background: rgba(255, 200, 100, 0.8);
+            box-shadow: 0 0 6px rgba(255, 200, 100, 0.5);
+            animation: pls 1.5s ease-in-out infinite;
+        }
+
+        #s2 .wait-dot {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        @keyframes pls {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .4
+            }
+        }
+
+        #s2 .agent-name {
+            flex: 1;
+            font-size: 11px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.45);
+            letter-spacing: 0.015em;
+        }
+
+        #s2 .agent-time {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Flags panel */
+        #s2 .flags {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        #s2 .flag {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        #s2 .flag-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            margin-top: 1px;
+        }
+
+        #s2 .flag-warn .flag-icon {
+            background: rgba(255, 140, 60, 0.1);
+            color: rgba(255, 160, 80, 0.8);
+            border: 1px solid rgba(255, 140, 60, 0.15);
+        }
+
+        #s2 .flag-ok .flag-icon {
+            background: rgba(160, 220, 160, 0.08);
+            color: rgba(160, 220, 160, 0.7);
+            border: 1px solid rgba(160, 220, 160, 0.12);
+        }
+
+        #s2 .flag-txt {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.35);
+            line-height: 1.5;
+        }
+
+        #s2 .flag-txt strong {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 1px;
+            font-size: 11px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- switcher -->
+    <div class="sw">
+        <button class="sw-tab on" onclick="pick('s1',this)">I · Meridian</button>
+        <div class="sw-sep"></div>
+        <button class="sw-tab" onclick="pick('s2',this)">II · Obsidian</button>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════════
+     CONCEPT I — MERIDIAN
+══════════════════════════════════════════════════════ -->
+    <section class="scene on" id="s1" style="padding-top:48px">
+        <div class="bg"></div>
+        <div class="grid"></div>
+
+        <nav class="nav">
+            <div class="logo">Intelli<i>Credit</i></div>
+            <div class="nav-links">
+                <a class="nav-link">Home</a>
+                <a class="nav-link">About</a>
+            </div>
+            <button class="nav-cta">Get Started →</button>
+        </nav>
+
+        <div class="hero" style="margin:0 auto;width:100%">
+            <!-- Eyebrow -->
+            <div class="eyebrow">
+                <div class="eyebrow-dot"></div>
+                <span class="eyebrow-txt">AI-Powered Corporate Credit Appraisal · Indian Lending</span>
+            </div>
+
+            <!-- Headline -->
+            <h1 class="h1">
+                Bank-grade credit decisions,<br>
+                <em>without the wait.</em>
+            </h1>
+
+            <!-- Sub -->
+            <p class="sub">
+                Intelli·Credit ingests your borrower's documents, runs <b>autonomous web research</b> across MCA,
+                eCourts & news, and produces an <b>explainable ML risk score</b> and a complete Credit Appraisal Memo —
+                in under three minutes.
+            </p>
+
+            <!-- CTAs -->
+            <div class="cta-row">
+                <button class="btn-p">Begin Assessment →</button>
+                <button class="btn-s">How it works</button>
+            </div>
+
+            <!-- Pipeline steps -->
+            <div class="pipeline">
+                <div class="pipe-step">
+                    <div class="pipe-num">01</div>
+                    <div class="pipe-name">Upload Documents</div>
+                    <div class="pipe-desc">PDF, GST, ITR, bank statements, scanned docs</div>
+                </div>
+                <div class="pipe-step active-step">
+                    <div class="pipe-num">02</div>
+                    <div class="pipe-name">Add Analyst Notes</div>
+                    <div class="pipe-desc">Qualitative due diligence context</div>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">03</div>
+                    <div class="pipe-name">Pipeline Runs</div>
+                    <div class="pipe-desc">7 AI agents process in parallel</div>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-num">04</div>
+                    <div class="pipe-name">Review & Export</div>
+                    <div class="pipe-desc">Score, explainability, CAM download</div>
+                </div>
+            </div>
+
+            <!-- Glass feature cards -->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">⬡</div>
+                    <div class="card-title">Multi-source ingestion</div>
+                    <div class="card-body">OCR pipeline handles scanned PDFs, GST returns, ITR JSON, bank CSVs, and
+                        annual reports with Qwen2.5-VL fallback.</div>
+                    <div class="card-tags">
+                        <span class="tag">GST</span><span class="tag">ITR</span><span class="tag">PDF OCR</span><span
+                            class="tag">Bank CSV</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">◎</div>
+                    <div class="card-title">Autonomous research agent</div>
+                    <div class="card-body">Cross-checks MCA21 filings, eCourts records, news sentiment, and promoter
+                        history — zero manual lookup required.</div>
+                    <div class="card-tags">
+                        <span class="tag">MCA21</span><span class="tag">eCourts</span><span class="tag">Firecrawl</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon">◈</div>
+                    <div class="card-title">Explainable CAM output</div>
+                    <div class="card-body">XGBoost scoring with SHAP-style factors, Five Cs breakdown, risk premium
+                        logic, and a full CAM in Word or PDF.</div>
+                    <div class="card-tags">
+                        <span class="tag">XGBoost</span><span class="tag">SHAP</span><span class="tag">CAM docx</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="statbar">
+            <div class="stat">
+                <div class="stat-n">9+</div>
+                <div class="stat-l">Document Formats</div>
+            </div>
+            <div class="stat">
+                <div class="stat-n">7</div>
+                <div class="stat-l">AI Agents</div>
+            </div>
+            <div class="stat">
+                <div class="stat-n">&lt;3m</div>
+                <div class="stat-l">Full CAM Generation</div>
+            </div>
+            <div class="stat">
+                <div class="stat-n">100%</div>
+                <div class="stat-l">Explainable Scoring</div>
+            </div>
+        </div>
+        <div style="height:60px"></div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════
+     CONCEPT II — OBSIDIAN
+══════════════════════════════════════════════════════ -->
+    <section class="scene" id="s2" style="padding-top:48px">
+        <div class="light"></div>
+        <div class="grain"></div>
+        <div class="lines"></div>
+
+        <nav class="nav">
+            <div class="logo">Intelli<span>Credit</span></div>
+            <div class="nav-mid">
+                <span class="nl cur">Home</span>
+                <span class="nl">About</span>
+            </div>
+            <div class="nav-right">
+                <span class="badge">v2.0 · India</span>
+                <button class="get-started">Get Started →</button>
+            </div>
+        </nav>
+
+        <div class="body">
+            <!-- Left -->
+            <div class="left">
+                <div class="left-top">
+                    <div class="kicker">
+                        <div class="kicker-line"></div>
+                        <span class="kicker-txt">Corporate Credit Intelligence</span>
+                    </div>
+
+                    <h1 class="h1">
+                        The AI that reads<br>
+                        your borrower<br>
+                        <em>before you do.</em>
+                    </h1>
+
+                    <div class="sub-block">
+                        <p class="sub">
+                            Intelli·Credit is an end-to-end <strong>credit appraisal engine</strong> built for Indian
+                            lending workflows. Upload documents, let seven AI agents work in parallel, and receive a
+                            fully explainable risk score alongside a <strong>bank-ready CAM</strong> — in minutes.
+                        </p>
+                        <div class="bullets">
+                            <div class="bullet">
+                                <div class="bullet-icon">▸</div>
+                                Ingests GST returns, ITR, bank statements, PDFs with OCR fallback via Qwen2.5-VL
+                            </div>
+                            <div class="bullet">
+                                <div class="bullet-icon">▸</div>
+                                Autonomous MCA21, eCourts & news research — no manual lookups
+                            </div>
+                            <div class="bullet">
+                                <div class="bullet-icon">▸</div>
+                                XGBoost + rules engine with SHAP explainability and Five Cs breakdown
+                            </div>
+                            <div class="bullet">
+                                <div class="bullet-icon">▸</div>
+                                Generates a complete Credit Appraisal Memo in Word and PDF
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ctas">
+                        <button class="cta-main">Begin Assessment →</button>
+                        <button class="cta-ghost">View architecture</button>
+                    </div>
+                </div>
+
+                <div class="stat-row">
+                    <div>
+                        <div class="sr-num">9+</div>
+                        <div class="sr-lbl">Document types</div>
+                    </div>
+                    <div>
+                        <div class="sr-num">7</div>
+                        <div class="sr-lbl">AI agents</div>
+                    </div>
+                    <div>
+                        <div class="sr-num">&lt;3m</div>
+                        <div class="sr-lbl">CAM generation</div>
+                    </div>
+                    <div>
+                        <div class="sr-num">100%</div>
+                        <div class="sr-lbl">Explainable</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right — live glass dashboard -->
+            <div class="right">
+
+                <!-- Risk Score -->
+                <div class="gp">
+                    <div class="gp-head">
+                        <span class="gp-title">Risk Score</span>
+                        <span class="gp-status"><span class="gp-dot"></span>Live</span>
+                    </div>
+                    <div class="gp-body">
+                        <div class="score-row">
+                            <div class="score-big">6.4</div>
+                            <div class="score-meta">
+                                <div class="score-grade">Moderate Risk</div>
+                                <span class="score-label">65th Percentile</span>
+                            </div>
+                        </div>
+                        <div class="gauge-track">
+                            <div class="gauge-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Five Cs -->
+                <div class="gp">
+                    <div class="gp-head">
+                        <span class="gp-title">Five Cs Breakdown</span>
+                    </div>
+                    <div class="gp-body">
+                        <div class="five-cs">
+                            <div class="fc-row"><span class="fc-label">Character</span>
+                                <div class="fc-track">
+                                    <div class="fc-fill" style="width:78%"></div>
+                                </div><span class="fc-val">7.8</span>
+                            </div>
+                            <div class="fc-row"><span class="fc-label">Capacity</span>
+                                <div class="fc-track">
+                                    <div class="fc-fill warn" style="width:62%"></div>
+                                </div><span class="fc-val">6.2</span>
+                            </div>
+                            <div class="fc-row"><span class="fc-label">Capital</span>
+                                <div class="fc-track">
+                                    <div class="fc-fill warn" style="width:59%"></div>
+                                </div><span class="fc-val">5.9</span>
+                            </div>
+                            <div class="fc-row"><span class="fc-label">Conditions</span>
+                                <div class="fc-track">
+                                    <div class="fc-fill" style="width:71%"></div>
+                                </div><span class="fc-val">7.1</span>
+                            </div>
+                            <div class="fc-row"><span class="fc-label">Collateral</span>
+                                <div class="fc-track">
+                                    <div class="fc-fill" style="width:83%"></div>
+                                </div><span class="fc-val">8.3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent pipeline -->
+                <div class="gp">
+                    <div class="gp-head">
+                        <span class="gp-title">Agent Pipeline</span>
+                        <span class="gp-status"><span class="active-dot"
+                                style="width:5px;height:5px;border-radius:50%;background:rgba(255,200,100,0.8)"></span>Running</span>
+                    </div>
+                    <div class="gp-body">
+                        <div class="agent-list">
+                            <div class="agent-item">
+                                <div class="agent-state done-dot"></div><span class="agent-name">Document ingestion &
+                                    OCR</span><span class="agent-time">0:18</span>
+                            </div>
+                            <div class="agent-item">
+                                <div class="agent-state done-dot"></div><span class="agent-name">GST
+                                    cross-validation</span><span class="agent-time">0:31</span>
+                            </div>
+                            <div class="agent-item">
+                                <div class="agent-state done-dot"></div><span class="agent-name">Bank statement
+                                    analysis</span><span class="agent-time">0:44</span>
+                            </div>
+                            <div class="agent-item">
+                                <div class="agent-state active-dot"></div><span class="agent-name"
+                                    style="color:rgba(255,255,255,0.65)">Web research agent</span><span
+                                    class="agent-time" style="color:rgba(255,200,100,0.6)">running…</span>
+                            </div>
+                            <div class="agent-item">
+                                <div class="agent-state wait-dot"></div><span class="agent-name">ML scoring
+                                    engine</span><span class="agent-time">—</span>
+                            </div>
+                            <div class="agent-item">
+                                <div class="agent-state wait-dot"></div><span class="agent-name">CAM
+                                    generation</span><span class="agent-time">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anomaly flags -->
+                <div class="gp">
+                    <div class="gp-head"><span class="gp-title">Anomaly Flags</span></div>
+                    <div class="gp-body">
+                        <div class="flags">
+                            <div class="flag flag-warn">
+                                <div class="flag-icon">⚠</div>
+                                <div class="flag-txt"><strong>DSCR Below 1.0×</strong>Debt service coverage at 0.93× —
+                                    cashflow stress indicator</div>
+                            </div>
+                            <div class="flag flag-warn">
+                                <div class="flag-icon">⚠</div>
+                                <div class="flag-txt"><strong>Revenue Concentration</strong>Top 2 clients account for
+                                    68% of revenue</div>
+                            </div>
+                            <div class="flag flag-ok">
+                                <div class="flag-icon">✓</div>
+                                <div class="flag-txt"><strong>Clean Audit Trail</strong>3 years audited, no
+                                    qualifications noted</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function pick(id, el) {
+            document.querySelectorAll('.scene').forEach(s => s.classList.remove('on'));
+            document.querySelectorAll('.sw-tab').forEach(t => t.classList.remove('on'));
+            document.getElementById(id).classList.add('on');
+            el.classList.add('on');
+        }
+    </script>
+</body>
+
+</html>

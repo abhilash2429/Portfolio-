@@ -1,0 +1,246 @@
+[data-rehype-pretty-code-figure] pre {
+  @apply rounded-lg bg-secondary px-0;
+}
+
+[data-rehype-pretty-code-figure] code {
+  @apply border-0 p-0 font-mono text-sm !leading-snug text-muted-foreground md:text-base;
+}
+
+[data-rehype-pretty-code-figure] code[data-line-numbers] {
+  counter-reset: line;
+}
+
+[data-rehype-pretty-code-figure] code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply mr-4 inline-block w-4 text-right text-muted-foreground/50;
+}
+
+[data-rehype-pretty-code-figure] [data-line] {
+  @apply border-l-2 border-l-transparent px-3;
+}
+
+[data-rehype-pretty-code-figure] [data-highlighted-line] {
+  background: rgba(255, 255, 255, 0.05);
+  @apply border-l-foreground;
+}
+
+[data-rehype-pretty-code-figure] [data-highlighted-chars] {
+  @apply rounded bg-foreground/20;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Syntax highlighting - align with monochrome theme */
+[data-rehype-pretty-code-figure] span[style*="color:#4D9375"],
+[data-rehype-pretty-code-figure] span[style*="color: #4D9375"] {
+  @apply !text-foreground;
+}
+
+[data-rehype-pretty-code-figure] span[style*="color:#80A665"],
+[data-rehype-pretty-code-figure] span[style*="color: #80A665"] {
+  @apply !text-muted-foreground;
+}
+
+[data-rehype-pretty-code-figure] span[style*="color:#C98A7D"],
+[data-rehype-pretty-code-figure] span[style*="color: #C98A7D"] {
+  @apply !text-muted-foreground;
+}
+
+[data-rehype-pretty-code-figure] span[style*="color:#5DA994"],
+[data-rehype-pretty-code-figure] span[style*="color: #5DA994"] {
+  @apply !text-foreground;
+}
+
+.mdx-content code {
+  @apply rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground;
+}
+
+.mdx-content code::before,
+.mdx-content code::after {
+  content: none;
+}
+
+.mdx-content pre {
+  @apply mb-3 overflow-x-auto rounded-lg border border-border bg-muted p-4;
+}
+
+.mdx-content pre code {
+  @apply bg-transparent p-0 text-foreground/80;
+}
+
+.mdx-content p {
+  @apply mb-3 leading-6 text-muted-foreground;
+}
+
+.mdx-content h1 {
+  @apply mb-3 mt-6 font-serif text-4xl font-normal;
+}
+
+.mdx-content h2 {
+  @apply mb-3 mt-6 font-serif text-3xl font-normal;
+}
+
+.mdx-content h3 {
+  @apply mb-2 mt-4 font-serif text-2xl font-normal;
+}
+
+.mdx-content h4 {
+  @apply mb-2 mt-4 font-serif text-xl font-normal;
+}
+
+.mdx-content a {
+  @apply rounded text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.mdx-content a:hover {
+  @apply text-white decoration-2;
+}
+
+.mdx-content ul {
+  @apply mb-3 ml-6 list-outside list-disc space-y-1;
+}
+
+.mdx-content ol {
+  @apply mb-3 ml-6 list-outside list-decimal space-y-1;
+}
+
+.mdx-content li {
+  @apply mb-1 text-muted-foreground;
+}
+
+.mdx-content li > ul,
+.mdx-content li > ol {
+  @apply ml-6 mt-1;
+}
+
+.mdx-content blockquote {
+  @apply my-3 border-l-4 border-foreground pl-4 italic text-muted-foreground;
+}
+
+.mdx-content > img,
+.mdx-content > p > img {
+  @apply my-4 rounded-lg;
+}
+
+.mdx-content hr {
+  @apply my-6 border-border;
+}
+
+.mdx-content table {
+  @apply mb-4 w-full border-collapse;
+}
+
+.mdx-content th,
+.mdx-content td {
+  @apply border border-border px-4 py-2;
+}
+
+.mdx-content th {
+  @apply bg-muted font-medium;
+}
+
+.mdx-content mark {
+  @apply rounded bg-foreground bg-opacity-20 px-1;
+}
+
+.mdx-content p:first-child {
+  @apply mt-0;
+}
+
+.mdx-content h5 {
+  @apply mb-0 mt-3 font-serif text-lg;
+}
+
+.mdx-content figure {
+  @apply my-6;
+}
+
+.mdx-content ol a,
+.mdx-content ul a {
+  @apply rounded text-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+}
+
+.mdx-content ol li,
+.mdx-content ul li {
+  @apply ps-[2px];
+}
+
+.mdx-content figure,
+.mdx-content code,
+.mdx-content pre,
+[data-rehype-pretty-code-figure] [data-line] {
+  @apply !font-mono;
+}
+
+.mdx-content pre:focus,
+.mdx-content figure:focus,
+[data-rehype-pretty-code-figure]:focus {
+  @apply outline-none;
+}
+
+.mdx-content figure,
+.mdx-content pre {
+  @apply overflow-x-auto;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.mdx-content {
+  @apply relative w-full overflow-hidden text-base leading-6;
+}
+
+.mdx-content div[data-ntpc="YouTubeEmbed"] {
+  @apply relative mx-auto mt-3 w-full;
+  max-width: calc(100vw - 2rem);
+}
+
+.mdx-content div[data-ntpc="YouTubeEmbed"] > div {
+  @apply relative w-full;
+  aspect-ratio: 16/9;
+}
+
+.mdx-content div[data-ntpc="YouTubeEmbed"] iframe {
+  @apply absolute left-0 top-0 h-full w-full rounded-lg;
+  max-width: 100%;
+  frameborder: 0;
+  referrerpolicy: "strict-origin-when-cross-origin";
+  allowfullscreen: true;
+}
+
+.mdx-content div[data-ntpc="YouTubeEmbed"] lite-youtube {
+  @apply absolute inset-0 h-full w-full rounded-lg;
+}
+
+.mdx-content span[data-line] span[style*="color:#6C7086"],
+.mdx-content span[data-line] span[style*="color: rgb(108, 112, 134)"] {
+  @apply !text-muted-foreground/50;
+}
+
+.mdx-content p a,
+.mdx-content ol a,
+.mdx-content ul a {
+  @apply transition-colors duration-200;
+}
+
+/* Reset MDX styles inside tweet card */
+.mdx-content [class*="max-w-lg"] {
+  @apply my-4;
+}
+
+.mdx-content [class*="max-w-lg"] * {
+  margin: revert;
+  padding: revert;
+}
+
+.mdx-content [class*="max-w-lg"] a {
+  @apply !text-foreground !no-underline !ring-0 !ring-offset-0 focus:!ring-0;
+}
+
+.mdx-content [class*="max-w-lg"] a[class*="muted"] {
+  @apply !text-muted-foreground;
+}
