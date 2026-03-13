@@ -30,6 +30,30 @@ const projects = [
     isRepo: true,
     repoUrl: "https://github.com/abhilash2429/DeepRead",
   },
+  {
+    id: createId(),
+    Icon: ChainGpt,
+    title: `Anon-Chat`,
+    description:
+      "Anonymous chat application with end-to-end encryption and real-time messaging.",
+    deployedURL: "https://anon-chat2.vercel.app/",
+    cover: DeepRead,
+    stacks: ["Websockets", "Next.js", "Tailwind CSS"],
+    isRepo: true,
+    repoUrl: "https://github.com/abhilash2429/Anon-Chat",
+  },
+  {
+    id: createId(),
+    Icon: ChainGpt,
+    title: `Sum-it-Up`,
+    description:
+      "Chrome extension that summarizes web pages, YouTube videos, and text",
+    deployedURL: "https://github.com/abhilash2429/Sum-it-Up",
+    cover: DeepRead,
+    stacks: ["Chrome Extension", "Gemini", "Html , Css , JS"],
+    isRepo: true,
+    repoUrl: "https://github.com/abhilash2429/Sum-it-Up",
+  },
 ];
 
 export default projects;
