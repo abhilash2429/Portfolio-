@@ -4,6 +4,8 @@ import { ChainGpt } from "~/assets/svg";
 // Project cover images
 import IntelliCredit from "~/assets/images/cover/IntelliCredit.png";
 import DeepRead from "~/assets/images/cover/DeepRead.png";
+import SumItUp from "~/assets/images/cover/SumItUp.png";
+import AnonChat from "~/assets/images/cover/AnonChat.png";
 
 const projects = [
   {
@@ -37,7 +39,7 @@ const projects = [
     description:
       "Anonymous chat application with end-to-end encryption and real-time messaging.",
     deployedURL: "https://anon-chat2.vercel.app/",
-    cover: DeepRead,
+    cover: AnonChat,
     stacks: ["Websockets", "Next.js", "Tailwind CSS"],
     isRepo: true,
     repoUrl: "https://github.com/abhilash2429/Anon-Chat",
@@ -49,7 +51,7 @@ const projects = [
     description:
       "Chrome extension that summarizes web pages, YouTube videos, and text",
     deployedURL: "https://github.com/abhilash2429/Sum-it-Up",
-    cover: DeepRead,
+    cover: SumItUp,
     stacks: ["Chrome Extension", "Gemini", "Html , Css , JS"],
     isRepo: true,
     repoUrl: "https://github.com/abhilash2429/Sum-it-Up",
