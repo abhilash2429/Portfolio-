@@ -39,7 +39,7 @@ const projects = [
     description:
       "Anonymous chat application with end-to-end encryption and real-time messaging.",
     deployedURL: "https://anon-chat2.vercel.app/",
-    cover: Anon-Chat,
+    cover: AnonChat,
     stacks: ["Websockets", "Next.js", "Tailwind CSS"],
     isRepo: true,
     repoUrl: "https://github.com/abhilash2429/Anon-Chat",
