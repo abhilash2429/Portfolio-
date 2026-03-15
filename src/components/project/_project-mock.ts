@@ -14,7 +14,7 @@ const projects = [
     title: `Intelli Credit`,
     description:
       "AI-powered corporate credit appraisal engine for Indian lending workflows.",
-    deployedURL: "https://www.underdevelopment.com/",
+    deployedURL: "https://intelli-credit-kappa.vercel.app/",
     cover: IntelliCredit,
     stacks: ["XGBoost", "LangChain"],
     isRepo: true,

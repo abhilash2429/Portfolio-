@@ -25,7 +25,7 @@ export async function GET() {
       url: BasePath(`/blog/${post.slugAsParams}`),
       date: post.date,
       description: post.description,
-      author: "Shydev",
+      author: "Abhilash",
     });
   });
 
