@@ -12,7 +12,7 @@ import { Toaster } from "~/components/ui/sonner";
 
 const RootProviders = ({ children }: { children: ReactNode }) => {
   return (
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
       <LenisProvider>
         <ReactQueryProvider>
           <TooltipProvider>
