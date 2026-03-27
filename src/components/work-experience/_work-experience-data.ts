@@ -22,16 +22,9 @@ const workExperiences: TWorkExperience[] = [
       "LangChain",
       "LangGraph",
       "Qdrant",
-      "Python 3.11+",
       "FastAPI",
-      "PostgreSQL",
-      "Redis",
-      "WebSockets",
       "Whisper",
-      "Next.js 14",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
+      "WebSockets"
     ]
   },
 ];

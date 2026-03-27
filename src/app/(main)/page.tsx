@@ -16,8 +16,8 @@ const HomePage = () => {
   return (
     <div className="!mt-8 space-y-14">
       <AboutSection />
-      <Skills />
       <WorkExperienceList experiences={workExperiences} />
+      <Skills />
       <GitHubContributions />
       <ProjectList projects={projects.slice(0, 4)} metadata />
       <PostList posts={sortedPosts.slice(0, 4)} showRss layout="single" />
