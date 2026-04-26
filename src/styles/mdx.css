@@ -96,7 +96,7 @@
 }
 
 .mdx-content a:hover {
-  @apply text-white decoration-2;
+  @apply text-foreground/80 decoration-2;
 }
 
 .mdx-content ul {

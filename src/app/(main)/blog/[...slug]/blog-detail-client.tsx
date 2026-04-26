@@ -42,7 +42,7 @@ export default function BlogDetailClient({ post, views }: BlogDetailClientProps)
         </div>
       </div>
 
-      <main id="main-content" className={cn("mdx-content prose prose-invert max-w-none")}>
+      <main id="main-content" className={cn("mdx-content prose dark:prose-invert max-w-none")}>
         <MDXContent code={post.body} />
       </main>
 
