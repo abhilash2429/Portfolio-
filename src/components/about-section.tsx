@@ -20,20 +20,6 @@ const AboutSection = () => {
         </p>
 
         <p className={typo({ variant: "paragraph", font: "sans" })}>
-          Currently building{" "}
-          <a
-            href="https://github.com/abhilash2429/artrix-ai"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground font-medium hover:underline"
-          >
-            Artrix-AI
-          </a>
-          , conversational AI agents for voice and chat, automating customer
-          support and sales interactions.
-        </p>
-
-        <p className={typo({ variant: "paragraph", font: "sans" })}>
           I have always been a big believer in technology. It impressed me from
           my early age — from iPods, Early Keypads to Android phones and now the present
           AI Revolution. I'm starting to love building things with AI, even when I
