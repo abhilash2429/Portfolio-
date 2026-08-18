@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaYoutube } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
 import { cn } from "~/lib/utils";
 import { CustomLink } from "../mdx";
@@ -15,6 +15,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   title,
   description,
   deployedURL,
+  demoUrl,
   cover,
   stacks,
   isRepo,
@@ -44,15 +45,26 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
             {description}
           </p>
 
-          <div className="!mt-2 flex items-center gap-4">
+          <div className="!mt-2 flex flex-wrap items-center gap-4">
             {deployedURL && (
               <CustomLink
-                aria-label={`visit ${title} live URL}`}
+                aria-label={`visit ${title} live URL`}
                 href={deployedURL}
                 className={linkClass}
               >
                 <FaExternalLinkAlt size={12} />
                 <span> Live Preview</span>
+              </CustomLink>
+            )}
+
+            {demoUrl && (
+              <CustomLink
+                aria-label={`watch ${title} demo video`}
+                href={demoUrl}
+                className={linkClass}
+              >
+                <FaYoutube size={14} />
+                <span> Demo</span>
               </CustomLink>
             )}
 

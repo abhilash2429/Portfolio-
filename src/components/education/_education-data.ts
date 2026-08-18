@@ -12,18 +12,18 @@ export type TEducation = {
 const education: TEducation[] = [
     {
         id: createId(),
-        institution: "Gokaraju Rangaraju Institute of Engineering and Technology",
+        institution: "GRIET, Hyderabad",
         website: "https://griet.ac.in/",
-        degree: "Bachelor of Technology",
-        description: "Computer Science and Engineering , Specializing in Artificial Intelligence and Machine Learning.",
+        degree: "B.Tech, CS & Engineering (AI & ML) — CGPA: 9.0",
+        description: "Gokaraju Rangaraju Institute of Engineering and Technology. Specialization in Artificial Intelligence and Machine Learning.",
         duration: "2024 - 2028",
     },
     {
         id: createId(),
-        institution: "Excelllencia Junior College",
-        website: "https://example.com/",
-        degree: "InterMediate",
-        description: "MPC",
+        institution: "Excellencia Junior College, Hyderabad",
+        website: "https://excellencia.co.in/",
+        degree: "Intermediate (MPC) — Percentage: 97.0%",
+        description: "State Board Intermediate Education with Mathematics, Physics, and Chemistry.",
         duration: "2022 - 2024",
     },
 ];

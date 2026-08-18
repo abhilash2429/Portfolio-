@@ -14,7 +14,7 @@ export const config = {
 
   social: {
     github: "https://github.com/abhilash2429",
-    linkedin: "https://www.linkedin.com/in/abhilashreddy2429/",
+    linkedin: "https://www.linkedin.com/in/abhilashreddymanda",
     instagram: "",
     discord: "https://discordapp.com/users/abhilash_2429",
     email: "abhilashreddy2429@gmail.com",
