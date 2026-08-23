@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
+import { typo } from "./ui/typograpghy";
 
 const GitHubCalendar = dynamic(() => import("react-github-calendar"), {
   ssr: false,
@@ -11,18 +12,21 @@ const GitHubContributions = () => {
   const { resolvedTheme } = useTheme();
 
   return (
-    <div className="w-full">
-      <GitHubCalendar
-        username="abhilash2429"
-        colorScheme={resolvedTheme === "dark" ? "dark" : "light"}
-        fontSize={12}
-        blockSize={12}
-        theme={{
-          light: ["#ebedf0", "#999999", "#666666", "#333333", "#000000"],
-          dark: ["#1b1b1b", "#333333", "#666666", "#999999", "#ffffff"],
-        }}
-      />
-    </div>
+    <section aria-label="contributions" className="my-4 space-y-8 bg-background">
+      <h2 className={typo({ variant: "h2" })}>GitHub Contributions</h2>
+      <div className="w-full">
+        <GitHubCalendar
+          username="abhilash2429"
+          colorScheme={resolvedTheme === "dark" ? "dark" : "light"}
+          fontSize={12}
+          blockSize={12}
+          theme={{
+            light: ["#ebedf0", "#999999", "#666666", "#333333", "#000000"],
+            dark: ["#1b1b1b", "#333333", "#666666", "#999999", "#ffffff"],
+          }}
+        />
+      </div>
+    </section>
   );
 };
 
