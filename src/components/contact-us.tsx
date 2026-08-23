@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "~/components/ui/form";
 import config from "~/config";
+import { cn } from "~/lib/utils";
 import { ContactSchema, contactSchemaType } from "~/schema";
 import { CustomLink } from "./mdx";
 import Socials from "./socials";
@@ -69,7 +70,7 @@ const ContactUs = () => {
           </p>
 
           <div className="space-y-3">
-            <h3>Follow me </h3>
+            <h3 className="text-sm font-medium text-foreground">Follow me</h3>
             <Socials />
           </div>
         </div>
@@ -79,7 +80,9 @@ const ContactUs = () => {
             className="w-full space-y-3 rounded-md bg-muted p-3 sm:space-y-4 sm:rounded-none sm:bg-transparent sm:p-0"
             onSubmit={form.handleSubmit(onSubmit)}
           >
-            <h2 className="block text-center font-serif text-xl sm:hidden">Fill this form</h2>
+            <h2 className={cn(typo({ variant: "h2" }), "text-center sm:hidden")}>
+              Fill this form
+            </h2>
             <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
               <FormField
                 control={form.control}
@@ -87,12 +90,7 @@ const ContactUs = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input
-                        type="text"
-                        placeholder="Full Name"
-                        className="normal-case"
-                        {...field}
-                      />
+                      <Input type="text" placeholder="Full Name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -105,12 +103,7 @@ const ContactUs = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <Input
-                        type="text"
-                        placeholder="Phone No"
-                        className="normal-case"
-                        {...field}
-                      />
+                      <Input type="text" placeholder="Phone No" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -124,7 +117,7 @@ const ContactUs = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input type="email" placeholder="Email" className="normal-case" {...field} />
+                    <Input type="email" placeholder="Email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -137,7 +130,7 @@ const ContactUs = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Textarea placeholder="Message" className="normal-case" {...field} />
+                    <Textarea placeholder="Message" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
