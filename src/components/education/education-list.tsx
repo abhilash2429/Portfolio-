@@ -1,4 +1,5 @@
 import { typo } from "../ui/typograpghy";
+import BlurText from "~/components/ui/blur-text";
 import { TEducation } from "./_education-data";
 import EducationItem from "./education-item";
 
@@ -14,7 +15,9 @@ const EducationList = ({
     return (
         <section aria-label="education" className="mt-5 space-y-6">
             {showTitle && (
-                <h2 className={typo({ variant: "h2" })}>Education</h2>
+                <h2 className={typo({ variant: "h2" })}>
+                  <BlurText text="Education" />
+                </h2>
             )}
 
             <div className="!mt-8">

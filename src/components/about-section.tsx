@@ -5,12 +5,15 @@ import config from "~/config";
 import { cn } from "~/lib/utils";
 import { typo } from "./ui/typograpghy";
 import codingImage from "~/assets/images/coding.png";
+import BlurText from "~/components/ui/blur-text";
 
 const AboutSection = () => {
   return (
     <section className="grid gap-8 sm:gap-4 md:grid-cols-3" aria-label="About">
       <div className="order-2 space-y-3 sm:order-1 md:col-span-2">
-        <h1 className="font-serif text-2xl sm:text-3xl">Abhilash, 19</h1>
+        <h1 className="font-serif text-2xl sm:text-3xl">
+          <BlurText text="Abhilash, 19" />
+        </h1>
 
         <p className={typo({ variant: "paragraph", font: "sans" })}>
           Aspiring AI and Software Engineer working at the intersection of
@@ -57,6 +60,7 @@ const AboutSection = () => {
       <div className="relative order-1 block aspect-square sm:order-2 sm:hidden md:block md:h-[352px] md:w-[352px] md:self-center">
         <div className="absolute inset-0 -z-10 size-full rounded-md bg-gradient-to-br from-muted via-secondary to-background opacity-80" />
         <Image
+          id="about-photo"
           alt="Locked In"
           src={codingImage}
           placeholder="blur"

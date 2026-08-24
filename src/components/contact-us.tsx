@@ -11,6 +11,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { typo } from "./ui/typograpghy";
+import BlurText from "~/components/ui/blur-text";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -60,7 +61,9 @@ const ContactUs = () => {
     <section aria-label="contact" className="!mt-5">
       <div className="flex w-full flex-col items-center gap-4 md:flex-row">
         <div className="size-full space-y-4 md:max-w-xs">
-          <h2 className={typo({ variant: "h2" })}>Get in Touch</h2>
+          <h2 className={typo({ variant: "h2" })}>
+            <BlurText text="Get in Touch" />
+          </h2>
           <p className="text-base text-muted-foreground">
             If you have any inquiries, please feel free to reach out. You can contact me via email
             at{" "}
@@ -81,7 +84,7 @@ const ContactUs = () => {
             onSubmit={form.handleSubmit(onSubmit)}
           >
             <h2 className={cn(typo({ variant: "h2" }), "text-center sm:hidden")}>
-              Fill this form
+              <BlurText text="Fill this form" />
             </h2>
             <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
               <FormField

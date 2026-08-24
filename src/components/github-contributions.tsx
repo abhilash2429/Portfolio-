@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
 import { typo } from "./ui/typograpghy";
+import BlurText from "~/components/ui/blur-text";
 
 const GitHubCalendar = dynamic(() => import("react-github-calendar"), {
   ssr: false,
@@ -13,7 +14,9 @@ const GitHubContributions = () => {
 
   return (
     <section aria-label="contributions" className="my-4 space-y-8 bg-background">
-      <h2 className={typo({ variant: "h2" })}>GitHub Contributions</h2>
+      <h2 className={typo({ variant: "h2" })}>
+        <BlurText text="GitHub Contributions" />
+      </h2>
       <div className="w-full">
         <GitHubCalendar
           username="abhilash2429"

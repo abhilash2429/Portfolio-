@@ -29,3 +29,95 @@ html.lenis body {
     @apply bg-ring/20 text-foreground;
   }
 }
+
+/* ── Staggered blur reveal (plays right after the intro finishes) ── */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.intro-reveal > * {
+  opacity: 0;
+}
+
+.intro-reveal.is-revealed > * {
+  animation: reveal-up 0.75s ease forwards;
+}
+
+.intro-reveal.is-revealed > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.intro-reveal.is-revealed > *:nth-child(2) {
+  animation-delay: 0.17s;
+}
+.intro-reveal.is-revealed > *:nth-child(3) {
+  animation-delay: 0.29s;
+}
+.intro-reveal.is-revealed > *:nth-child(4) {
+  animation-delay: 0.41s;
+}
+.intro-reveal.is-revealed > *:nth-child(5) {
+  animation-delay: 0.53s;
+}
+.intro-reveal.is-revealed > *:nth-child(6) {
+  animation-delay: 0.65s;
+}
+.intro-reveal.is-revealed > *:nth-child(7) {
+  animation-delay: 0.77s;
+}
+.intro-reveal.is-revealed > *:nth-child(8) {
+  animation-delay: 0.89s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-reveal > *,
+  .intro-reveal.is-revealed > * {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+}
+
+/* ── Nav blur drop-in (leads the post-intro cascade) ── */
+@keyframes nav-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.nav-intro-reveal {
+  opacity: 0;
+}
+
+.nav-intro-reveal.is-revealed {
+  opacity: 1;
+  animation: nav-drop-in 0.7s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-intro-reveal,
+  .nav-intro-reveal.is-revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+}

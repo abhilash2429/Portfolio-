@@ -1,4 +1,5 @@
 import { typo } from "../ui/typograpghy";
+import BlurText from "~/components/ui/blur-text";
 import { THackathon } from "./_hackathon-data";
 import HackathonItem from "./hackathon-item";
 
@@ -14,7 +15,9 @@ const HackathonList = ({
   return (
     <section aria-label="hackathons and competitions" className="mt-5 space-y-6">
       {showTitle && (
-        <h2 className={typo({ variant: "h2" })}>Hackathons & Competitions</h2>
+        <h2 className={typo({ variant: "h2" })}>
+          <BlurText text="Hackathons & Competitions" />
+        </h2>
       )}
 
       <div className="!mt-8">
