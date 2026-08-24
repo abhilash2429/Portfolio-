@@ -112,6 +112,44 @@ html.lenis body {
   animation: nav-drop-in 0.7s ease forwards;
 }
 
+/* ── Space canvas dotted background ── */
+.dots-bg {
+  background-image: radial-gradient(
+    circle,
+    hsl(var(--border)) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* ── Space fullscreen mode: own the whole viewport, no page chrome ── */
+body.space-fullscreen {
+  min-height: 100dvh;
+}
+
+.space-viewport {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+}
+
+.space-viewport.panning {
+  cursor: grabbing;
+}
+
+/* Free text: borderless writing directly on the canvas */
+.space-free-text {
+  width: max-content;
+  min-width: 2ch;
+  outline: none;
+  background: transparent;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .nav-intro-reveal,
   .nav-intro-reveal.is-revealed {

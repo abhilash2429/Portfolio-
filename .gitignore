@@ -53,3 +53,5 @@ Thumbs.db
 CLAUDE_OPUS_INSTRUCTIONS.md 
 CODEX_INSTRUCTIONS.md 
 GEMINI.md
+# space local data (dev fallback storage)
+.data/
