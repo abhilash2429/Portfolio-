@@ -1,3 +1,15 @@
 {
-  "items": []
+  "items": [
+    {
+      "id": "mthavfhh-s7hdci",
+      "type": "text",
+      "x": 701,
+      "y": 450,
+      "rotation": 0,
+      "color": "default",
+      "text": "Hello thats my fucking ",
+      "fontSize": 16,
+      "createdAt": 1788184485413
+    }
+  ]
 }
